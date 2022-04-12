@@ -1,4 +1,4 @@
-import CreateStash from './features/stash/CreateStash'
+import CreateStash from './features/create-stash/CreateStash'
 
 const App = () => {
 
