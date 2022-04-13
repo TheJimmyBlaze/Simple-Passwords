@@ -1,5 +1,7 @@
 import { memo } from 'react';
 
+import { Form, ProgressBar } from 'react-bootstrap';
+
 const calculatePasswordStrength = (password, minLength) => {
 
     const containsLowercase = /[a-z]/;
@@ -45,16 +47,12 @@ const PasswordStrength = memo(({
 
     return (
         <section>
-            <div className='progress bg-dark'>
-                <div className={`progress-bar bg-${passwordStrengthColour.get(passwordStrength)}`}
-                    role='progressbar'
-                    style={{width: `${passwordStrength * 25}%`}}
-                    />
-            </div>
+            <ProgressBar variant={passwordStrengthColour.get(passwordStrength)}
+                now={passwordStrength * 25} />
 
-            <div className='form-text'>
+            <Form.Text>
                 Password strength: {passwordStrengthDescription.get(passwordStrength)}
-            </div>    
+            </Form.Text>
         </section>
     );
 });

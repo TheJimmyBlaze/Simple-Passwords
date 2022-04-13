@@ -1,5 +1,7 @@
 import { memo, useState } from 'react';
 
+import { Form, Button} from 'react-bootstrap';
+
 import StashName from './StashName';
 import SetPassword from '../passwords/SetPassword';
 
@@ -11,7 +13,7 @@ const CreateStashForm = memo(() => {
     const canSubmit = nameValid && passwordValid;
 
     return (
-        <form>
+        <Form>
             <article className='form-text'>
                 <p>
                     Your Stash is saved as an encrypted Cookie in your Browser.
@@ -25,22 +27,22 @@ const CreateStashForm = memo(() => {
 
             <section className='d-flex'>
 
-                <button className='btn btn-danger'
+                <Button variant='danger'
                     tabIndex='-1'
                     title='Cancel'>
                     <i className='bi bi-arrow-left' />
-                </button>
+                </Button>
 
                 <span className='ms-auto'>
 
-                    <button className={`btn ${canSubmit ? 'btn-success' : 'btn-outline-success'}`} 
+                    <Button variant={`${canSubmit ? 'success' : 'outline-success'}`} 
                         disabled={!canSubmit}>
                         <i className='bi bi-plus-lg me-1' />
                         Create
-                    </button>
+                    </Button>
                 </span>
             </section>
-        </form>
+        </Form>
     );
 });
 
