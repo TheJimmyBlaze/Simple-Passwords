@@ -5,7 +5,10 @@ import SetPassword from '../passwords/SetPassword';
 
 const CreateStashForm = memo(() => {
 
+    const [nameValid, setNameValid] = useState(false);
     const [passwordValid, setPasswordValid] = useState(false);
+
+    const canSubmit = nameValid && passwordValid;
 
     return (
         <form>
@@ -16,20 +19,22 @@ const CreateStashForm = memo(() => {
                 </p>
             </article>
 
-            <StashName />
+            <StashName setNameValid={setNameValid} />
 
             <SetPassword setPasswordValid={setPasswordValid} />
 
             <section className='d-flex'>
 
                 <button className='btn btn-danger'
+                    tabIndex='-1'
                     title='Cancel'>
                     <i className='bi bi-arrow-left' />
                 </button>
 
                 <span className='ms-auto'>
 
-                    <button className='btn btn-success'>
+                    <button className={`btn ${canSubmit ? 'btn-success' : 'btn-outline-success'}`} 
+                        disabled={!canSubmit}>
                         <i className='bi bi-plus-lg me-1' />
                         Create
                     </button>

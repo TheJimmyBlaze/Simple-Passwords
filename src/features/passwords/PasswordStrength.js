@@ -21,6 +21,7 @@ const calculatePasswordStrength = (password, minLength) => {
 };
 
 const passwordStrengthColour = new Map([
+    [0, 'secondary'],
     [1, 'secondary'],
     [2, 'danger'],
     [3, 'warning'],

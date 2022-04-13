@@ -17,13 +17,13 @@ const CreatePassword = memo(({
     const generatePassword = usePasswordGenerator();
 
     const onPasswordChange = event => {
-        let newPassword = event.target.value;
+        let newPassword = event.target.value.replace(' ', '');
         setPassword(newPassword);
         validate(newPassword, confirmPassword);
     }
 
     const onConfirmPasswordChange = event => {
-        let newConfirmPassword = event.target.value;
+        let newConfirmPassword = event.target.value.replace(' ', '');
         setConfirmPassword(newConfirmPassword);
         validate(password, newConfirmPassword);
     }
@@ -39,38 +39,49 @@ const CreatePassword = memo(({
         validate(generatedPassword, generatedPassword);
     }
 
-    let [tooShort, setTooShort] = useState(null);
-    let [dontMatch, setDontMatch] = useState(null);
+    const validationStages = {
+        Empty: 0,
+        TooShort: 1,
+        DontMatch: 2,
+        Valid: 3,
+    }
+
+    let [validationStage, setValidationStage] = useState(validationStages.Empty);
 
     const validate = (password, confirmPassword) => {
 
-        if (password.length < minPasswordLength) {
-            setPasswordValid(false);
-            setTooShort(true);
+        setPasswordValid(false);
+
+        if (!password) {
+            setValidationStage(validationStages.Empty);
             return;
         }
-        setTooShort(false);
+
+        if (password.length < minPasswordLength) {
+            setValidationStage(validationStages.TooShort);
+            return;
+        }
 
         if (password !== confirmPassword) {
-            setPasswordValid(false);
-            setDontMatch(true);
+            setValidationStage(validationStages.DontMatch);
             return;
-        }
-        setDontMatch(false);   
+        } 
 
+        setValidationStage(validationStages.Valid);
         setPasswordValid(true); 
     }
 
-    const isValid = validationField => {
+    const isValid = requiredValidationStage => {
         
-        if (validationField === null) {
+        if (validationStage < requiredValidationStage) {
             return '';
         }
 
-        if (validationField) {
+        if (validationStage === requiredValidationStage) {
             return 'is-invalid';
         }
-        else {
+
+        if (validationStage > requiredValidationStage) {
             return 'is-valid';
         }
     };
@@ -83,7 +94,7 @@ const CreatePassword = memo(({
 
             <div className='input-group has-validation mb-2'>
 
-                <input className={`form-control ${isValid(tooShort)}`}
+                <input className={`form-control ${isValid(validationStages.TooShort)}`}
                     id='stashPasswordInput'
                     type={showPassword ? 'text' : 'password'}
                     placeholder='Password'
@@ -93,6 +104,7 @@ const CreatePassword = memo(({
 
                 <button className='btn btn-primary p-2'
                     type='button'
+                    tabIndex='-1'
                     title={showPassword ? 'Hide Password' : 'Show Password'}
                     onClick={onShowPassword}>
                     <i className={`bi bi-eye${showPassword ? '-slash' : ''}`} />
@@ -100,6 +112,7 @@ const CreatePassword = memo(({
 
                 <button className='btn btn-primary p-2'
                     type='button'
+                    tabIndex='-1'
                     title='Generate Secure Password'
                     onClick={onGeneratePassword}>
                     <i className='bi bi-arrow-repeat' />
@@ -107,6 +120,7 @@ const CreatePassword = memo(({
 
                 <button className='btn btn-primary p-2'
                     type='button'
+                    tabIndex='-1'
                     title='Copy Password'>
                     <i className='bi bi-clipboard2-plus' />
                 </button>
@@ -118,7 +132,7 @@ const CreatePassword = memo(({
 
             <div className='form-group has-validation mb-2'>
 
-                <input className={`form-control ${isValid(dontMatch)}`}
+                <input className={`form-control ${isValid(validationStages.DontMatch)}`}
                     id='stashConfirmPasswordInput'
                     type={showPassword ? 'text' : 'password'}
                     placeholder='Confirm Password'
