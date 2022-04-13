@@ -113,6 +113,10 @@ const CreatePassword = memo(({
                     isInvalid={isValid(validationStages.TooShort) === false}
                     />
 
+                <Form.Control.Feedback type='invalid'>
+                    Password is too short.
+                </Form.Control.Feedback>
+
                 <Button className='p-2'
                     tabIndex='-1'
                     title={showPassword ? 'Hide Password' : 'Show Password'}
@@ -135,14 +139,9 @@ const CreatePassword = memo(({
                     disabled={password === ''}>
                     <i className='bi bi-clipboard2-plus' />
                 </Button>
-
-                <Form.Control.Feedback type='invalid'>
-                    Password is too short.
-                </Form.Control.Feedback>
             </InputGroup>
 
-            <InputGroup className='mb-2'>
-
+            <section className='mb-2'>
                 <Form.Control id='stashConfirmPasswordInput'
                     type={showPassword ? 'text' : 'password'}
                     placeholder='Confirm Password'
@@ -155,7 +154,7 @@ const CreatePassword = memo(({
                 <Form.Control.Feedback type='invalid'>
                     Passwords don't match.
                 </Form.Control.Feedback>
-            </InputGroup>
+            </section>
 
             <PasswordStrength password={password}
                 minLength={minPasswordLength}
