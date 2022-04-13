@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useRef, useState, useEffect } from 'react';
 import { usePasswordGenerator } from './usePasswordGenerator';
 
 import PasswordStrength from './PasswordStrength';
@@ -37,6 +37,19 @@ const CreatePassword = memo(({
         setConfirmPassword(generatedPassword)
 
         validate(generatedPassword, generatedPassword);
+    }
+
+    const toastTimeout = 2000;
+
+    let [showCopyToast, setShowCopyToast] = useState(false);
+    let copyToastTimer = useRef();
+
+    useEffect(() => () => clearTimeout(copyToastTimer.current));
+
+    const onCopy = () => {
+        
+        setShowCopyToast(true);
+        copyToastTimer.current = setTimeout(() => setShowCopyToast(false), toastTimeout);
     }
 
     const validationStages = {
@@ -121,7 +134,8 @@ const CreatePassword = memo(({
                 <button className='btn btn-primary p-2'
                     type='button'
                     tabIndex='-1'
-                    title='Copy Password'>
+                    title='Copy Password'
+                    onClick={onCopy}>
                     <i className='bi bi-clipboard2-plus' />
                 </button>
 
@@ -148,6 +162,23 @@ const CreatePassword = memo(({
             <PasswordStrength password={password}
                 minLength={minPasswordLength}
                 />
+
+            <div className='position-fixed bottom-0 end-0 p-3'
+                style={{zIndex: '11'}}>
+
+                <div className='toast'
+                    role='alert'>
+                    <div className='d-flex align-items-center'>
+                        <div className='toast-body'>
+
+                                <i className='bi bi-clipboard2-plus text-primary fs-5 me-2' />
+                                Password Copied to Clipboard
+
+                        </div>
+                        <button type="button" class="btn-close me-2 m-auto"></button>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 });
