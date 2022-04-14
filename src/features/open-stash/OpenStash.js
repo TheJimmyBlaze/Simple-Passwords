@@ -1,34 +1,33 @@
 import { memo } from 'react';
 import { v4 as uuid } from 'uuid';
 
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Row, Col } from 'react-bootstrap';
 
 import StashCard from './StashCard';
+import NewStashCard from './NewStashCard';
+import ImportStashCard from './ImportStashCard';
 
 const OpenStash = memo(() => {
 
     const testStashes = [
         {
             id: uuid(),
-            name: 'General',
-            lastAccessDate: Date.now()
+            name: 'General'
         },
         {
             id: uuid(),
-            name: 'Social Media',
-            lastAccessDate: Date.now()
+            name: 'Social Media'
         },
         {
             id: uuid(),
-            name: 'Family Accounts',
-            lastAccessDate: Date.now()
+            name: 'Family Accounts'
         }
     ];
 
     return (
         <Card style={{width: '24rem'}}>
             
-            <Card.Header className='position-relative bg-primary text-dim'>
+            <Card.Header className='position-relative bg-primary text-inset'>
 
                 <h3 className='position-absolute'>
                     <i className='bi bi-shield-lock-fill' />
@@ -39,27 +38,28 @@ const OpenStash = memo(() => {
 
             <Card.Body>
 
-                <section className='mb-5'>
+                <article className='form-text'>
+                    <p>
+                        Found {testStashes.length} encrypted Stash cookies.
+                        You'll need the password to get into them.
+                    </p>
+                </article>
+
+                <section>
                     {
                         testStashes.map(stash => (
                             <StashCard key={stash.id}
-                                stashName={stash.name}
-                                lastAccessDate={stash.lastAccessDate}
+                                id={stash.id}
+                                name={stash.name}
                                 />
                         ))
                     }
-                </section>
 
-                <section className='d-flex'>
-                    
-                    <Button variant='warning'
-                        title='Import From Backup File'>
-                        <i className='bi bi-file-earmark-binary' />
-                    </Button>
+                    <hr />
 
-                    <Button className='w-100 ms-2'>
-                        Create New Stash
-                    </Button>
+                    <NewStashCard />
+
+                    <ImportStashCard />
                 </section>
             </Card.Body>
         </Card>

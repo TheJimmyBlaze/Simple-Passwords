@@ -21,10 +21,30 @@
     background-color: $gray-900;
 }
 
-.text-dim {
-    color: $gray-800;
+.fs-huge {
+    font-size: $font-size-base * 5;
 }
 
 .fs-7 {
     font-size: $font-size-base * 0.75;
+}
+
+.fs-8 {
+    font-size: $font-size-base * 0.65;
+}
+
+.text-inset {
+    color: $inset;
+}
+
+.btn {
+    color: $inset;
+}
+
+.btn-secondary {
+    color: $light;
+}
+
+.avatar-gradient {
+    background-image: radial-gradient(farthest-side at 80% 50%, rgba($dark, 0.25), transparent);
 }

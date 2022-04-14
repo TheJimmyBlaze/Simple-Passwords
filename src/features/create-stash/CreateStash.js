@@ -8,9 +8,9 @@ const CreateStash = memo(() => {
 
     return (
         <section>
-            <Card Style={{width: '24rem'}}>
+            <Card style={{width: '24rem'}}>
                 
-                <Card.Header className='position-relative bg-primary text-dim'>
+                <Card.Header className='position-relative bg-primary text-inset'>
 
                     <h3 className='position-absolute'>
                         <i className='bi bi-shield-fill-plus' />

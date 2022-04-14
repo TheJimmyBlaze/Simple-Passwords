@@ -37,7 +37,6 @@ const CreateStashForm = memo(() => {
 
                     <Button variant={`${canSubmit ? 'success' : 'outline-success'}`} 
                         disabled={!canSubmit}>
-                        <i className='bi bi-plus-lg me-1' />
                         Create
                     </Button>
                 </span>
