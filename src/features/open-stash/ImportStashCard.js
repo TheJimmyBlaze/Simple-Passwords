@@ -15,8 +15,6 @@ const ImportStashCard = memo(() => {
                 </div>
             </div>
 
-            <div className='vr bg-dark' />
-
             <section className='p-2 px-3 text-start d-flex flex-column'>
                 <span>Import Existing Stash</span>
                 <span className='fs-8 text-muted'>Import an existing Stash from a backup file.</span>

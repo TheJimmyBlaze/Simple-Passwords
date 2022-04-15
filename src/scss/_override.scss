@@ -20,13 +20,21 @@ $white: $gray-200;
 $black: $gray-900;
 
 $primary: $turquoise;
+$primary-dark: scale-color($primary, $lightness: -30%);
 $secondary: $gray-700;
+$secondary-dark: scale-color($secondary, $lightness: -30%);
 $success: $turquoise;
+$success-dark: scale-color($success, $lightness: -30%);
 $danger: $red;
+$danger-dark: scale-color($danger, $lightness: -30%);
 $warning: $orange;
+$warning-dark: scale-color($warning, $lightness: -30%);
 $info: $yellow;
+$info-dark: scale-color($info, $lightness: -30%);
+
 $dark: $gray-900;
 $light: $gray-200;
+
 $inset: rgba($dark, 0.75);
 
 $text-light: $gray-200;

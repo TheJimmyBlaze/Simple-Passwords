@@ -1,4 +1,12 @@
 
+html {
+    background-color: $dark;
+}
+
+#root {
+    background-color: $dark;
+}
+
 .card-body {
     background-color: $gray-800;
 }
@@ -45,6 +53,7 @@
     color: $light;
 }
 
-.avatar-gradient {
+.gradient-panel-end {
     background-image: radial-gradient(farthest-side at 80% 50%, rgba($dark, 0.25), transparent);
+    border-right: 1px solid $gray-800;
 }

@@ -20,9 +20,7 @@ const StashCard = memo(({
         <Button className='w-100 mt-2 p-0 d-flex flex-row'
             variant='secondary'>
 
-            <Image className='p-2 avatar-gradient' src={avatar} /> 
-
-            <div className='vr bg-dark' />
+            <Image className='p-2 gradient-panel-end' src={avatar} /> 
 
             <section className='p-2 px-3 text-start d-flex flex-column'>
                 <span>{ name }</span>

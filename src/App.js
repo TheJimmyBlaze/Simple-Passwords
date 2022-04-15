@@ -4,8 +4,10 @@ import OpenStash from './features/open-stash/OpenStash'
 const App = () => {
 
     return (
-        <div className="d-flex vw-100 vh-100 bg-dark align-items-center justify-content-center">
-            <OpenStash />
+        <div className='vh-100'>
+            <div className="d-flex flex-column justify-content-center align-items-center min-vh-100">
+                <CreateStash />
+            </div>
         </div>
     );
 };

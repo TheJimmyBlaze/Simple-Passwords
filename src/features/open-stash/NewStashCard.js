@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 const NewStashCard = memo(() => {
 
     return (
-        <Button className='w-100 mt-2 p-0 d-flex flex-row'
+        <Button className='w-100 p-0 d-flex flex-row'
             variant='secondary'>
 
             <div className='p-2 bg-success text-inset rounded-start'>
@@ -14,8 +14,6 @@ const NewStashCard = memo(() => {
                     <h1 className='m-0'><i className='bi bi-file-earmark-plus' /></h1>
                 </div>
             </div>
-
-            <div className='vr bg-dark' />
 
             <section className='p-2 px-3 text-start d-flex flex-column'>
                 <span>Create New Stash</span>
