@@ -113,15 +113,11 @@ const CreatePassword = memo(({
                     isInvalid={isValid(validationStages.TooShort) === false}
                     />
 
-                <Form.Control.Feedback type='invalid'>
-                    Password is too short.
-                </Form.Control.Feedback>
-
                 <Button className='p-2'
                     tabIndex='-1'
                     title={showPassword ? 'Hide Password' : 'Show Password'}
                     onClick={onShowPassword}>
-                    <i className={`bi bi-eye${showPassword ? '-slash' : ''}`} />
+                    <i className={`bi bi-eye${showPassword ? '' : '-slash'}`} />
                 </Button>
 
                 <Button className='p-2'
@@ -131,7 +127,7 @@ const CreatePassword = memo(({
                     <i className='bi bi-arrow-repeat' />
                 </Button>
 
-                <Button className='p-2'
+                <Button className='p-2 rounded-end'
                     variant={password === '' ? 'outline-primary' : 'primary'}
                     tabIndex='-1'
                     title='Copy Password'
@@ -139,6 +135,10 @@ const CreatePassword = memo(({
                     disabled={password === ''}>
                     <i className='bi bi-clipboard2-plus' />
                 </Button>
+
+                <Form.Control.Feedback type='invalid'>
+                    Password is too short.
+                </Form.Control.Feedback>
             </InputGroup>
 
             <section className='mb-2'>

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
 import { Card } from 'react-bootstrap';
@@ -10,7 +10,9 @@ import ImportStashCard from './ImportStashCard';
 
 const OpenStash = memo(() => {
 
-    const testStashes = [
+    let [focusedCardID, setFocusedCardID] = useState('');
+
+    let [testStashes] = useState([
         {
             id: uuid(),
             name: 'General'
@@ -23,10 +25,11 @@ const OpenStash = memo(() => {
             id: uuid(),
             name: 'Family Accounts'
         }
-    ];
+    ]);
 
     return (
-        <Card style={{width: '24rem'}}>
+        <Card className='m-3'
+            style={{width: '28rem'}}>
             
             <Card.Header className='position-relative bg-primary text-inset'>
 
@@ -46,6 +49,8 @@ const OpenStash = memo(() => {
                         <StashCard key={stash.id}
                             id={stash.id}
                             name={stash.name}
+                            focusedCardID={focusedCardID}
+                            setFocusedCardID={setFocusedCardID}
                             />
                     ))
                 }
