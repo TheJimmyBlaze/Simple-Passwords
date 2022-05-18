@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { createAvatar } from '@dicebear/avatars';
-import * as style from '@dicebear/avatars-bottts-sprites';
+import * as style from '@dicebear/avatars-identicon-sprites';
 
 import { Button, Image } from 'react-bootstrap';
 
@@ -16,7 +16,8 @@ const StashCard = memo(({
     const avatar = createAvatar(style, {
         seed: id,
         dataUri: true,
-        size: 64
+        size: 64,
+        colors: ["grey"]
     });
 
     const onClick = () => {

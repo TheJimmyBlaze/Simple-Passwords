@@ -19,13 +19,13 @@ $gray-900: #212529;
 $white: $gray-200;
 $black: $gray-900;
 
-$primary: $turquoise;
+$primary: $red;
 $primary-dark: scale-color($primary, $lightness: -30%);
 $secondary: $gray-700;
 $secondary-dark: scale-color($secondary, $lightness: -30%);
-$success: $turquoise;
+$success: $green;
 $success-dark: scale-color($success, $lightness: -30%);
-$danger: $red;
+$danger: $black;
 $danger-dark: scale-color($danger, $lightness: -30%);
 $warning: $orange;
 $warning-dark: scale-color($warning, $lightness: -30%);

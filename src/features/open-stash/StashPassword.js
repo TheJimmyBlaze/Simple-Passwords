@@ -32,7 +32,7 @@ const StashPassword = memo(() => {
 
                 <Button className='p2'
                     type='submit'
-                    variant='success'>
+                    variant='primary'>
                     <i className='bi bi-arrow-right' />
                 </Button>
             </InputGroup>

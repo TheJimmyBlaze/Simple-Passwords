@@ -8,7 +8,7 @@ const NewStashCard = memo(() => {
         <Button className='w-100 p-0 d-flex flex-row'
             variant='secondary'>
 
-            <div className='p-2 bg-success text-inset rounded-start'>
+            <div className='p-2 bg-primary text-inset rounded-start'>
                 <div className='d-flex justify-content-center align-items-center'
                     style={{width: '64px', height: '64px'}}>
                     <h1 className='m-0'><i className='bi bi-file-earmark-plus' /></h1>
